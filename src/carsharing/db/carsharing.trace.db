@@ -1,0 +1,24 @@
+2023-03-21 21:45:14 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Столбец "COMPANY.ID" не найден
+Column "COMPANY.ID" not found; SQL statement:
+SELECT car.id, car.name FROM car LEFT JOIN customer ON car.id = customer.rented_car_id WHERE customer.name IS NULL AND COMPANY.ID = 1; [42122-200]
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:453)
+	at org.h2.message.DbException.getJdbcSQLException(DbException.java:429)
+	at org.h2.message.DbException.get(DbException.java:205)
+	at org.h2.message.DbException.get(DbException.java:181)
+	at org.h2.expression.ExpressionColumn.getColumnException(ExpressionColumn.java:163)
+	at org.h2.expression.ExpressionColumn.optimize(ExpressionColumn.java:145)
+	at org.h2.expression.condition.Comparison.optimize(Comparison.java:190)
+	at org.h2.expression.condition.ConditionAndOr.optimize(ConditionAndOr.java:136)
+	at org.h2.command.dml.Select.prepare(Select.java:1209)
+	at org.h2.command.Parser.prepareCommand(Parser.java:744)
+	at org.h2.engine.Session.prepareLocal(Session.java:657)
+	at org.h2.engine.Session.prepareCommand(Session.java:595)
+	at org.h2.jdbc.JdbcConnection.prepareCommand(JdbcConnection.java:1235)
+	at org.h2.jdbc.JdbcStatement.executeQuery(JdbcStatement.java:78)
+	at carsharing.DAO.CustomerDaoImpl.getList2(CustomerDaoImpl.java:245)
+	at carsharing.DAO.CustomerDaoImpl.rentACar(CustomerDaoImpl.java:193)
+	at carsharing.Manager.customers(Manager.java:56)
+	at carsharing.DAO.CustomerDaoImpl.companyList(CustomerDaoImpl.java:60)
+	at carsharing.Main.conMenu(Main.java:25)
+	at carsharing.Main.main(Main.java:10)
